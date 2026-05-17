@@ -1,0 +1,47 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #F4F1EC;
+  --bg2:     #FAFAF7;
+  --bg3:     #EFEDE8;
+  --ink:     #1A1814;
+  --ink2:    #3D3A34;
+  --ink3:    #706C64;
+  --ink4:    #A09C94;
+  --accent:  #2A5C45;
+  --accent2: #1E4433;
+  --accentbg:#EBF4EF;
+  --line:    #E0DDD7;
+  --line2:   #CCC9C2;
+  --ff-display: 'Fraunces', Georgia, serif;
+  --ff-body:    'DM Sans', sans-serif;
+  --ff-mono:    'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--ff-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; }
+img { max-width: 100%; display: block; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .35; transform: scale(.7); }
+}
+
+/* Mobile utility: hide scrollbar on horizontal scroll containers */
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.scroll-x::-webkit-scrollbar { display: none; }
