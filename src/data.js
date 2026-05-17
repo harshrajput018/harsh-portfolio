@@ -1,6 +1,6 @@
 export const ME = {
   email: "harshrajput18@gmail.com",
-  linkedin: "https://linkedin.com/in/harshrajput018",
+  linkedin: "https://www.linkedin.com/in/harsh-rajput-0542a4185/",
   github: "https://github.com/harshrajput018",
   phone: "+91 7827960243",
   stats: [
