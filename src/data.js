@@ -4,7 +4,7 @@ export const ME = {
   github: "https://github.com/harshrajput018",
   phone: "+91 7827960243",
   stats: [
-    { n: "3+",  label: "AI Projects Shipped" },
+    { n: "3",   label: "Projects Shipped" },
     { n: "1yr", label: "At Infosys" },
     { n: "5+",  label: "Tech Stacks" },
   ],
@@ -12,38 +12,8 @@ export const ME = {
 
 export const PROJECTS = [
   {
-    id: "01", name: "EchoMind", tagline: "Chat with your documents using AI",
-    category: "AI · Full Stack", year: "2026",
-    stack: ["React", "Node.js", "MongoDB", "Groq", "RAG", "BM25"],
-    liveUrl: "https://echomind-pi.vercel.app",
-    githubUrl: "https://github.com/harshrajput018/echomind",
-    live: true, accent: "#2A5C45", accentBg: "#EBF4EF",
-    desc: "A full-stack 'Second Brain' — users upload PDFs and documents, then chat with their knowledge base through a custom-built RAG pipeline. Every AI response cites the exact source chunk.",
-    highlights: [
-      "Custom RAG + BM25 hybrid search — no paid vector DB needed",
-      "Groq Llama 3.3 70B with enforced source attribution on every response",
-      "JWT auth, multi-workspace support, real-time chunk indexing",
-      "Deployed on Render + Vercel with MongoDB Atlas at zero infra cost",
-    ],
-  },
-  {
-    id: "02", name: "Visionary", tagline: "AI marketing campaigns from one prompt",
-    category: "AI · Generative", year: "2026",
-    stack: ["React", "Node.js", "Groq", "DALL-E 3", "Cloudinary", "MongoDB"],
-    liveUrl: "https://visionary-eight-theta.vercel.app",
-    githubUrl: "https://github.com/harshrajput018/visionary",
-    live: true, accent: "#3B5EA6", accentBg: "#EBF0FA",
-    desc: "A dashboard for social media managers that generates complete AI marketing campaigns — SEO captions via Llama 3.3 and studio-quality images via DALL-E 3 — from a single product description.",
-    highlights: [
-      "Brand Persona engine persists writing voice as a reusable prompt template",
-      "Cloudinary CDN pipeline for image storage + MongoDB for campaign history",
-      "One-click retrieval and re-publishing of past campaigns",
-      "Full content consistency across all AI-generated assets",
-    ],
-  },
-  {
-    id: "03", name: "Sentinel", tagline: "AI-powered code security auditor",
-    category: "AI · DevTools", year: "2025",
+    id: "01", name: "Sentinel", tagline: "AI-powered code security auditor",
+    category: "AI · DevTools", year: "2026",
     stack: ["React", "Node.js", "LLMs", "Monaco Editor", "Docker", "MongoDB"],
     liveUrl: "https://sentinel-lac-two.vercel.app",
     githubUrl: "https://github.com/harshrajput018/sentinel",
@@ -54,6 +24,36 @@ export const PROJECTS = [
       "One-Click Refactor diff viewer — preview changes before accepting",
       "Code Health Scores tracked over time in MongoDB to expose recurring issues",
       "Full stack containerized with Docker for environment parity",
+    ],
+  },
+  {
+    id: "02", name: "Sprintly", tagline: "Jira/Linear-style project management tool",
+    category: "Full Stack · Real-time", year: "2026",
+    stack: ["Next.js 16", "TypeScript", "Prisma", "PostgreSQL", "Socket.io", "Redis"],
+    liveUrl: "https://jira-clone-web-seven.vercel.app",
+    githubUrl: "https://github.com/harshrajput018/jira-clone",
+    live: true, accent: "#3B5EA6", accentBg: "#EBF0FA",
+    desc: "A Jira/Linear-style project management tool — organizations, projects, drag-and-drop kanban boards, comments, labels, full-text search, and live real-time collaboration across sessions.",
+    highlights: [
+      "Turborepo monorepo: Next.js web app + a dedicated Socket.io real-time service",
+      "Redis pub/sub relay lets serverless functions publish domain events to the standalone socket server, authenticated per-session via short-lived JWTs",
+      "Redis-backed rate limiting and CI running against real Postgres/Redis service containers",
+      "Deployed across four managed services (Vercel, Render, Neon Postgres, Upstash Redis) with verified multi-stage Docker builds",
+    ],
+  },
+  {
+    id: "03", name: "Tiny Redis", tagline: "An in-memory key-value store, built from scratch",
+    category: "Systems · Infra", year: "2026",
+    stack: ["Node.js", "HTTP API", "AOF Persistence"],
+    liveUrl: "https://tiny-redis.onrender.com",
+    githubUrl: "https://github.com/harshrajput018/tiny-redis",
+    live: true, accent: "#2A5C45", accentBg: "#EBF4EF",
+    desc: "A Redis-inspired in-memory store built from scratch: TTL expiry, LRU eviction, and crash-safe persistence via an append-only log with compaction, exposed over an HTTP API with a live dashboard.",
+    highlights: [
+      "TTL expiry handled both lazily (on read) and actively (background sweep every 5s)",
+      "LRU eviction piggybacks on Map's insertion order for touch-to-promote semantics",
+      "Append-only log persistence with periodic snapshot compaction, same idea as Redis's AOF",
+      "Built and documented as five independently runnable stages: core store, LRU, persistence, HTTP layer, AOF",
     ],
   },
 ];
@@ -69,20 +69,20 @@ export const SKILLS = [
 
 export const EXPERIENCE = [
   {
-    co: "Infosys Ltd.", role: "Specialist Programmer",
-    period: "Nov 2024 – Nov 2025", loc: "Bengaluru / Remote", type: "Full-time",
+    co: "Primus Softech Solutions LLP", role: "Full-Stack Developer",
+    period: "Jan 2026 – Present", loc: "New Delhi", type: "Full-time",
     points: [
-      "Engineered an enterprise RAG search engine using Python & OpenAI CLIP — high-performance vector embedding pipelines that significantly improved semantic search across unstructured internal datasets.",
-      "Integrated LLMs with indexed enterprise data to deliver context-aware responses and slash search latency.",
-      "Optimized system architecture for scalable, robust AI-powered service deployment across internal platforms.",
+      "Contributing to development of the Centralized Coach Monitoring System (CCMS), a cross-platform Ionic React/TypeScript/Capacitor app giving real-time control over RMPU/AC systems, lighting, CCTV, and fault diagnostics across Vande Bharat trainsets.",
+      "Built and automated the end-to-end Android release pipeline (Capacitor, Gradle, GitHub Actions), replacing a manual build-sign-version process with a single triggered workflow producing a consistent, repeatable APK on every release.",
+      "Designed RESTful APIs (Node.js/Express, MVC pattern) and optimized SQL Server schemas for high-availability data exchange across coach subsystems.",
     ],
   },
   {
-    co: "Primus Softech LLP", role: "Frontend Developer Intern",
-    period: "Jan 2024 – May 2024", loc: "New Delhi", type: "Internship",
+    co: "Infosys Ltd.", role: "Specialist Programmer",
+    period: "Nov 2024 – Nov 2025", loc: "Bengaluru / Remote", type: "Full-time",
     points: [
-      "Built responsive React.js UI components optimized across mobile and desktop.",
-      "Integrated RESTful APIs in collaboration with backend teams, improving system reliability.",
+      "Engineered a RAG-based internal search engine (Python, OpenAI CLIP) with vector embedding pipelines, retrieving semantically relevant context from unstructured enterprise data that keyword search alone missed.",
+      "Integrated retrieved context directly into LLM-generated responses, replacing a keyword-only search flow with citation-backed answers for internal enterprise tooling.",
     ],
   },
 ];

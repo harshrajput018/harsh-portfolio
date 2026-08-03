@@ -1,147 +1,79 @@
 import React, { useState } from 'react';
-import useFade from '../hooks/useFade';
 import SectionHead from './SectionHead';
 import { PROJECTS } from '../data';
 
-function ProjectCard({ p, i }) {
-  const f = useFade(i * 0.1);
-  const [hov, setHov] = useState(false);
+function ProjectCard({ p }) {
   const [open, setOpen] = useState(false);
+  const [hov, setHov] = useState(false);
 
   return (
     <div
-      {...f}
-      style={{
-        ...f.style,
-        background: hov ? p.accentBg : 'var(--bg2)',
-        border: `1px solid ${hov ? p.accent + '33' : 'var(--line)'}`,
-        borderRadius: 12, overflow: 'hidden', transition: 'all 0.3s',
-        boxShadow: hov ? `0 8px 32px ${p.accent}18` : '0 1px 4px rgba(0,0,0,0.04)',
-      }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
+      style={{
+        border: `1px solid ${hov ? 'var(--line2)' : 'var(--line)'}`, borderRadius: 'var(--radius)',
+        padding: '1.6rem', background: 'var(--bg)',
+        boxShadow: hov ? '0 4px 16px rgba(0,0,0,0.06)' : 'none',
+        transform: hov ? 'translateY(-2px)' : 'none',
+        transition: 'box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease',
+      }}
     >
-      {/* Accent top bar */}
-      <div style={{ height: 3, background: p.accent }} />
-
-      <div style={{ padding: '1.5rem 1.5rem 1.4rem' }}>
-        {/* Header row */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
-              <span style={{ fontFamily: 'var(--ff-mono)', fontSize: '0.6rem', color: 'var(--ink4)', letterSpacing: '0.08em' }}>{p.id}</span>
-              <span style={{
-                fontFamily: 'var(--ff-mono)', fontSize: '0.58rem', letterSpacing: '0.06em',
-                padding: '0.15rem 0.55rem', borderRadius: 99,
-                background: 'var(--bg3)', color: 'var(--ink3)', border: '1px solid var(--line)',
-              }}>{p.category}</span>
-              {p.live && (
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', fontFamily: 'var(--ff-mono)', fontSize: '0.58rem', letterSpacing: '0.08em', color: 'var(--accent)' }}>
-                  <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--accent)', display: 'inline-block', animation: 'pulse 2s infinite' }} />
-                  Live
-                </span>
-              )}
-            </div>
-            <h3 style={{
-              fontFamily: 'var(--ff-display)', fontWeight: 700,
-              fontSize: '1.4rem', color: 'var(--ink)',
-              letterSpacing: '-0.02em', lineHeight: 1.05, marginBottom: '0.2rem',
-            }}>{p.name}</h3>
-            <p style={{ fontFamily: 'var(--ff-body)', fontSize: '0.8rem', color: 'var(--ink3)' }}>{p.tagline}</p>
-          </div>
-          <span style={{ fontFamily: 'var(--ff-mono)', fontSize: '0.62rem', color: 'var(--ink4)', flexShrink: 0, marginLeft: '0.75rem' }}>{p.year}</span>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem', marginBottom: '0.6rem' }}>
+        <div>
+          <h3 style={{ fontWeight: 700, fontSize: '1.2rem', color: 'var(--ink)', marginBottom: '0.25rem', letterSpacing: '-0.01em' }}>{p.name}</h3>
+          <p style={{ fontSize: '0.88rem', color: 'var(--ink3)' }}>{p.tagline}</p>
         </div>
-
-        {/* Description */}
-        <p style={{ fontSize: '0.85rem', fontWeight: 300, color: 'var(--ink2)', lineHeight: 1.75, marginBottom: '1.2rem' }}>{p.desc}</p>
-
-        {/* Stack tags */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.38rem', marginBottom: '1.2rem' }}>
-          {p.stack.map(t => (
-            <span key={t} style={{
-              fontFamily: 'var(--ff-mono)', fontSize: '0.6rem', letterSpacing: '0.04em',
-              padding: '0.2rem 0.58rem', borderRadius: 4,
-              background: 'var(--bg3)', color: 'var(--ink2)', border: '1px solid var(--line)',
-            }}>{t}</span>
-          ))}
-        </div>
-
-        {/* Actions */}
-        <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', flexWrap: 'wrap' }}>
-          {p.liveUrl && (
-            <a href={p.liveUrl} target="_blank" rel="noreferrer" style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
-              padding: '0.48rem 1rem', borderRadius: 4,
-              background: p.accent, color: '#fff',
-              fontFamily: 'var(--ff-body)', fontWeight: 500, fontSize: '0.78rem',
-              transition: 'opacity 0.2s', WebkitTapHighlightColor: 'transparent',
-            }}
-              onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-              onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-            >Live Demo ↗</a>
-          )}
-          <a href={p.githubUrl} target="_blank" rel="noreferrer" style={{
-            display: 'inline-flex', alignItems: 'center', gap: '0.35rem',
-            padding: '0.48rem 1rem', borderRadius: 4,
-            background: 'transparent', color: 'var(--ink2)',
-            border: '1px solid var(--line2)',
-            fontFamily: 'var(--ff-body)', fontSize: '0.78rem', transition: 'all 0.2s',
-            WebkitTapHighlightColor: 'transparent',
-          }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--ink3)'; e.currentTarget.style.color = 'var(--ink)'; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--line2)'; e.currentTarget.style.color = 'var(--ink2)'; }}
-          >GitHub</a>
-
-          {/* Expand toggle */}
-          <button
-            onClick={() => setOpen(o => !o)}
-            style={{
-              marginLeft: 'auto', background: 'none',
-              border: `1px solid ${open ? p.accent : 'var(--line2)'}`,
-              borderRadius: 4, width: 32, height: 32,
-              color: open ? p.accent : 'var(--ink3)',
-              fontFamily: 'var(--ff-mono)', fontSize: '1rem',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              transition: 'all 0.2s', cursor: 'pointer',
-              WebkitTapHighlightColor: 'transparent',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = p.accent; e.currentTarget.style.color = p.accent; }}
-            onMouseLeave={e => { if (!open) { e.currentTarget.style.borderColor = 'var(--line2)'; e.currentTarget.style.color = 'var(--ink3)'; } }}
-          >{open ? '−' : '+'}</button>
-        </div>
-
-        {/* Highlights (expandable) */}
-        {open && (
-          <div style={{ marginTop: '1.4rem', paddingTop: '1.4rem', borderTop: `1px solid ${p.accent}22` }}>
-            <div style={{
-              fontFamily: 'var(--ff-mono)', fontSize: '0.6rem',
-              letterSpacing: '0.12em', textTransform: 'uppercase',
-              color: p.accent, marginBottom: '0.9rem',
-            }}>Key highlights</div>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-              {p.highlights.map((h, i) => (
-                <li key={i} style={{ display: 'flex', gap: '0.75rem', fontSize: '0.83rem', color: 'var(--ink2)', lineHeight: 1.65, fontWeight: 300 }}>
-                  <span style={{ color: p.accent, flexShrink: 0, marginTop: '0.05rem' }}>→</span>{h}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <span style={{ fontFamily: 'var(--ff-mono)', fontSize: '0.78rem', color: 'var(--ink4)', flexShrink: 0 }}>{p.year}</span>
       </div>
+
+      <p style={{ fontSize: '0.9rem', color: 'var(--ink2)', lineHeight: 1.65, marginBottom: '1rem' }}>{p.desc}</p>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.2rem' }}>
+        {p.stack.map(t => (
+          <span key={t} style={{
+            fontFamily: 'var(--ff-mono)',
+            fontSize: '0.73rem', padding: '0.22rem 0.6rem', borderRadius: 'var(--radius-sm)',
+            background: 'var(--bg3)', color: 'var(--ink2)',
+          }}>{t}</span>
+        ))}
+      </div>
+
+      <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'center', fontSize: '0.85rem' }}>
+        {p.liveUrl && (
+          <a href={p.liveUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--accent)', fontWeight: 600 }}>
+            Live demo
+          </a>
+        )}
+        <a href={p.githubUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--ink2)', fontWeight: 500 }}>
+          Source
+        </a>
+        <button
+          onClick={() => setOpen(o => !o)}
+          style={{ marginLeft: 'auto', background: 'none', border: 'none', color: 'var(--ink3)', fontSize: '0.85rem' }}
+        >{open ? 'Hide details' : 'More details'}</button>
+      </div>
+
+      {open && (
+        <ul style={{ marginTop: '1.1rem', paddingTop: '1.1rem', borderTop: '1px solid var(--line)', listStyle: 'disc', paddingLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          {p.highlights.map((h, i) => (
+            <li key={i} style={{ fontSize: '0.85rem', color: 'var(--ink2)', lineHeight: 1.6 }}>{h}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
 
 export default function Projects() {
   return (
-    <section id="projects" style={{ padding: '6rem 1.5rem', maxWidth: 1140, margin: '0 auto' }}>
-      <SectionHead eyebrow="Selected Work" title="Projects" />
+    <section id="projects" style={{ padding: '5rem 1.5rem', maxWidth: 1100, margin: '0 auto' }}>
+      <SectionHead title="Projects" subtitle="A few things I've built end to end." />
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))',
-        gap: '1.2rem',
+        gap: '1rem',
       }}>
-        {PROJECTS.map((p, i) => <ProjectCard key={p.id} p={p} i={i} />)}
+        {PROJECTS.map(p => <ProjectCard key={p.id} p={p} />)}
       </div>
     </section>
   );
