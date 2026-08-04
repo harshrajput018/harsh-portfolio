@@ -74,7 +74,7 @@ export const PROJECTS = [
     id: "05", name: "KnowledgeHub AI", tagline: "A retrieval-augmented generation platform",
     category: "AI · Backend", year: "2026",
     stack: ["FastAPI", "pgvector", "Groq", "Python"],
-    liveUrl: "https://knowledgehub-api.onrender.com/docs",
+    liveUrl: "https://knowledgehub-api.onrender.com",
     githubUrl: "https://github.com/harshrajput018/knowledgehub",
     live: true, accent: "#8B4513", accentBg: "#FBF0E8",
     desc: "Upload documents, ask questions, get answers grounded in and cited to what was actually uploaded. Hybrid search fuses real BM25 lexical scoring with pgvector cosine similarity via Reciprocal Rank Fusion.",
