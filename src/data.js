@@ -12,33 +12,32 @@ export const ME = {
 
 export const PROJECTS = [
   {
-    id: "01", name: "Sentinel", tagline: "AI-powered code security auditor",
-    category: "AI · DevTools", year: "2026",
-    stack: ["React", "Node.js", "LLMs", "Monaco Editor", "Docker", "MongoDB"],
-    liveUrl: "https://sentinel-lac-two.vercel.app",
-    githubUrl: "https://github.com/harshrajput018/sentinel",
-    live: true, accent: "#8B4513", accentBg: "#FBF0E8",
-    desc: "Teams paste code or connect a GitHub repo for instant AI-driven security audits and refactoring. Built on Monaco Editor (VS Code engine) for professional in-browser code review with a diff viewer.",
+    id: "01", name: "PyQueue", tagline: "A distributed task queue, built to prove out the mechanics",
+    category: "Backend · Distributed Systems", year: "2026",
+    stack: ["FastAPI", "Redis", "PostgreSQL", "Python"],
+    githubUrl: "https://github.com/harshrajput018/pyqueue",
+    live: false, accent: "#3B5EA6", accentBg: "#EBF0FA",
+    desc: "A priority-queue task system with a worker pool, exponential-backoff retries, and dead-lettering. Redis holds only job IDs; Postgres is the system of record for job status.",
     highlights: [
-      "Security-focused LLM system prompt engineered for vulnerability reasoning",
-      "One-Click Refactor diff viewer — preview changes before accepting",
-      "Code Health Scores tracked over time in MongoDB to expose recurring issues",
-      "Full stack containerized with Docker for environment parity",
+      "Lease-based crash recovery: workers renew a short-TTL Redis lease from a background thread independent of task execution",
+      "A reaper sweep (SELECT FOR UPDATE SKIP LOCKED) detects and requeues orphaned jobs if a worker process dies mid-task",
+      "Verified against a real hard-killed worker process (kill -9), not simulated",
+      "20 passing tests against real Postgres/Redis, not mocks",
     ],
   },
   {
-    id: "02", name: "Sprintly", tagline: "Jira/Linear-style project management tool",
-    category: "Full Stack · Real-time", year: "2026",
-    stack: ["Next.js 16", "TypeScript", "Prisma", "PostgreSQL", "Socket.io", "Redis"],
-    liveUrl: "https://jira-clone-web-seven.vercel.app",
-    githubUrl: "https://github.com/harshrajput018/jira-clone",
-    live: true, accent: "#3B5EA6", accentBg: "#EBF0FA",
-    desc: "A Jira/Linear-style project management tool — organizations, projects, drag-and-drop kanban boards, comments, labels, full-text search, and live real-time collaboration across sessions.",
+    id: "02", name: "KnowledgeHub AI", tagline: "A retrieval-augmented generation platform",
+    category: "AI · Backend", year: "2026",
+    stack: ["FastAPI", "pgvector", "Groq", "Python"],
+    liveUrl: "https://knowledgehub-api.onrender.com/docs",
+    githubUrl: "https://github.com/harshrajput018/knowledgehub",
+    live: true, accent: "#8B4513", accentBg: "#FBF0E8",
+    desc: "Upload documents, ask questions, get answers grounded in and cited to what was actually uploaded. Hybrid search fuses real BM25 lexical scoring with pgvector cosine similarity via Reciprocal Rank Fusion.",
     highlights: [
-      "Turborepo monorepo: Next.js web app + a dedicated Socket.io real-time service",
-      "Redis pub/sub relay lets serverless functions publish domain events to the standalone socket server, authenticated per-session via short-lived JWTs",
-      "Redis-backed rate limiting and CI running against real Postgres/Redis service containers",
-      "Deployed across four managed services (Vercel, Render, Neon Postgres, Upstash Redis) with verified multi-stage Docker builds",
+      "Streamed citation-grounded answers via Groq (LLaMA 3.3), required to cite sources for every claim",
+      "Verified the system correctly refuses to answer questions outside the ingested documents instead of hallucinating",
+      "Local embeddings (ONNX runtime, not torch) after a real production incident: torch OOM-killed the first deploy on Render's free tier",
+      "21 passing tests, including one real (not mocked) LLM call",
     ],
   },
   {
@@ -69,7 +68,7 @@ export const SKILLS = [
 
 export const EXPERIENCE = [
   {
-    co: "Primus Softech Solutions LLP", role: "Full-Stack Developer",
+    co: "Primus Softech Solutions LLP", role: "Software Developer",
     period: "Jan 2026 – Present", loc: "New Delhi", type: "Full-time",
     points: [
       "Contributing to development of the Centralized Coach Monitoring System (CCMS), a cross-platform Ionic React/TypeScript/Capacitor app giving real-time control over RMPU/AC systems, lighting, CCTV, and fault diagnostics across Vande Bharat trainsets.",
